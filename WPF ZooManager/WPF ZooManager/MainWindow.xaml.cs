@@ -35,6 +35,7 @@ namespace WPF_ZooManager
             sqlConnection = new SqlConnection(connectionString);
 
             ShowZoos();
+            ShowAllAnimals();
 
         }
 
@@ -78,6 +79,27 @@ namespace WPF_ZooManager
                     listAssociatedAnimals.DisplayMemberPath = "Name";
                     listAssociatedAnimals.SelectedValuePath = "Id";
                     listAssociatedAnimals.ItemsSource = animalTable.DefaultView;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
+        private void ShowAllAnimals()
+        {         
+            try
+            {
+                string query = "select * from Animal";
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+                using (sqlDataAdapter)
+                {
+                    DataTable animalTable = new DataTable();
+                    sqlDataAdapter.Fill(animalTable);
+                    listAllAnimals.DisplayMemberPath = "Name";
+                    listAllAnimals.SelectedValuePath = "Id";
+                    listAllAnimals.ItemsSource = animalTable.DefaultView;
                 }
             }
             catch (Exception e)
