@@ -66,29 +66,37 @@ namespace WPF_ZooManager
         {
             try
             {
-                string query = "select * from Animal a inner join ZooAnimal za on a.Id = za.AnimalId where ZooId = @ZooId";
+                string query = "select * from Animal a inner join ZooAnimal za on a.Id = za.AnimalId where za.ZooId = @ZooId";
 
                 SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
 
                 using (sqlDataAdapter)
                 {
-                    sqlCommand.Parameters.AddWithValue("@ZooId", listZoos.SelectedValue);
-                    DataTable animalTable = new DataTable();
-                    sqlDataAdapter.Fill(animalTable);
-                    listAssociatedAnimals.DisplayMemberPath = "Name";
-                    listAssociatedAnimals.SelectedValuePath = "Id";
-                    listAssociatedAnimals.ItemsSource = animalTable.DefaultView;
+                    if (listZoos.SelectedValue == null)
+                    {
+                        sqlCommand.Parameters.AddWithValue("@ZooId", 100);
+                    } else
+                    {
+                        sqlCommand.Parameters.AddWithValue("@ZooId", listZoos.SelectedValue);
+                    }
+                        
+                        DataTable animalTable = new DataTable();
+                        sqlDataAdapter.Fill(animalTable);
+                        listAssociatedAnimals.DisplayMemberPath = "Name";
+                        listAssociatedAnimals.SelectedValuePath = "Id";
+                        listAssociatedAnimals.ItemsSource = animalTable.DefaultView;
+                                        
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                //MessageBox.Show(e.ToString());
             }
         }
 
         private void ShowAllAnimals()
-        {         
+        {
             try
             {
                 string query = "select * from Animal";
@@ -110,7 +118,30 @@ namespace WPF_ZooManager
 
         private void ListZoos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //MessageBox.Show(listZoos.SelectedValue.ToString());
             ShowAssociatedAnimals();
+        }
+
+         private void Button_Delete_Zoo_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string query = "delete from Zoo where id = @ZooId";
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlConnection.Open();
+                sqlCommand.Parameters.AddWithValue("@ZooId", listZoos.SelectedValue);
+                sqlCommand.ExecuteScalar();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
+            finally
+            {
+                sqlConnection.Close();
+                ShowZoos();
+            }
+            
         }
     }
 }
