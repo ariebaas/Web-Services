@@ -161,7 +161,7 @@ SELECT Id, ZooId, AnimalId FROM ZooAnimal WHERE (Id = @Id)</CommandText>
   <xs:element name="BlockchainDbDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="BlockchainDbDataSet" msprop:Generator_UserDSName="BlockchainDbDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Zoo" msprop:Generator_TableClassName="ZooDataTable" msprop:Generator_TableVarName="tableZoo" msprop:Generator_TablePropName="Zoo" msprop:Generator_RowDeletingName="ZooRowDeleting" msprop:Generator_RowChangingName="ZooRowChanging" msprop:Generator_RowEvHandlerName="ZooRowChangeEventHandler" msprop:Generator_RowDeletedName="ZooRowDeleted" msprop:Generator_UserTableName="Zoo" msprop:Generator_RowChangedName="ZooRowChanged" msprop:Generator_RowEvArgName="ZooRowChangeEvent" msprop:Generator_RowClassName="ZooRow">
+        <xs:element name="Zoo" msprop:Generator_TableClassName="ZooDataTable" msprop:Generator_TableVarName="tableZoo" msprop:Generator_RowChangedName="ZooRowChanged" msprop:Generator_TablePropName="Zoo" msprop:Generator_RowDeletingName="ZooRowDeleting" msprop:Generator_RowChangingName="ZooRowChanging" msprop:Generator_RowEvHandlerName="ZooRowChangeEventHandler" msprop:Generator_RowDeletedName="ZooRowDeleted" msprop:Generator_RowClassName="ZooRow" msprop:Generator_UserTableName="Zoo" msprop:Generator_RowEvArgName="ZooRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -175,7 +175,7 @@ SELECT Id, ZooId, AnimalId FROM ZooAnimal WHERE (Id = @Id)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Animal" msprop:Generator_TableClassName="AnimalDataTable" msprop:Generator_TableVarName="tableAnimal" msprop:Generator_RowChangedName="AnimalRowChanged" msprop:Generator_TablePropName="Animal" msprop:Generator_RowDeletingName="AnimalRowDeleting" msprop:Generator_RowChangingName="AnimalRowChanging" msprop:Generator_RowEvHandlerName="AnimalRowChangeEventHandler" msprop:Generator_RowDeletedName="AnimalRowDeleted" msprop:Generator_RowClassName="AnimalRow" msprop:Generator_UserTableName="Animal" msprop:Generator_RowEvArgName="AnimalRowChangeEvent">
+        <xs:element name="Animal" msprop:Generator_TableClassName="AnimalDataTable" msprop:Generator_TableVarName="tableAnimal" msprop:Generator_TablePropName="Animal" msprop:Generator_RowDeletingName="AnimalRowDeleting" msprop:Generator_RowChangingName="AnimalRowChanging" msprop:Generator_RowEvHandlerName="AnimalRowChangeEventHandler" msprop:Generator_RowDeletedName="AnimalRowDeleted" msprop:Generator_UserTableName="Animal" msprop:Generator_RowChangedName="AnimalRowChanged" msprop:Generator_RowEvArgName="AnimalRowChangeEvent" msprop:Generator_RowClassName="AnimalRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -189,7 +189,7 @@ SELECT Id, ZooId, AnimalId FROM ZooAnimal WHERE (Id = @Id)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ZooAnimal" msprop:Generator_TableClassName="ZooAnimalDataTable" msprop:Generator_TableVarName="tableZooAnimal" msprop:Generator_RowChangedName="ZooAnimalRowChanged" msprop:Generator_TablePropName="ZooAnimal" msprop:Generator_RowDeletingName="ZooAnimalRowDeleting" msprop:Generator_RowChangingName="ZooAnimalRowChanging" msprop:Generator_RowEvHandlerName="ZooAnimalRowChangeEventHandler" msprop:Generator_RowDeletedName="ZooAnimalRowDeleted" msprop:Generator_RowClassName="ZooAnimalRow" msprop:Generator_UserTableName="ZooAnimal" msprop:Generator_RowEvArgName="ZooAnimalRowChangeEvent">
+        <xs:element name="ZooAnimal" msprop:Generator_TableClassName="ZooAnimalDataTable" msprop:Generator_TableVarName="tableZooAnimal" msprop:Generator_TablePropName="ZooAnimal" msprop:Generator_RowDeletingName="ZooAnimalRowDeleting" msprop:Generator_RowChangingName="ZooAnimalRowChanging" msprop:Generator_RowEvHandlerName="ZooAnimalRowChangeEventHandler" msprop:Generator_RowDeletedName="ZooAnimalRowDeleted" msprop:Generator_UserTableName="ZooAnimal" msprop:Generator_RowChangedName="ZooAnimalRowChanged" msprop:Generator_RowEvArgName="ZooAnimalRowChangeEvent" msprop:Generator_RowClassName="ZooAnimalRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -213,4 +213,10 @@ SELECT Id, ZooId, AnimalId FROM ZooAnimal WHERE (Id = @Id)</CommandText>
       <xs:field xpath="mstns:Id" />
     </xs:unique>
   </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="AnimalFK" msdata:parent="Animal" msdata:child="ZooAnimal" msdata:parentkey="Id" msdata:childkey="AnimalId" msprop:Generator_UserChildTable="ZooAnimal" msprop:Generator_ChildPropName="GetZooAnimalRows" msprop:Generator_UserRelationName="AnimalFK" msprop:Generator_ParentPropName="AnimalRow" msprop:Generator_RelationVarName="relationAnimalFK" msprop:Generator_UserParentTable="Animal" />
+      <msdata:Relationship name="ZooFK" msdata:parent="Zoo" msdata:child="ZooAnimal" msdata:parentkey="Id" msdata:childkey="ZooId" msprop:Generator_UserChildTable="ZooAnimal" msprop:Generator_ChildPropName="GetZooAnimalRows" msprop:Generator_UserRelationName="ZooFK" msprop:Generator_ParentPropName="ZooRow" msprop:Generator_RelationVarName="relationZooFK" msprop:Generator_UserParentTable="Zoo" />
+    </xs:appinfo>
+  </xs:annotation>
 </xs:schema>

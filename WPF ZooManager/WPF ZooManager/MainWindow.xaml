@@ -5,15 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_ZooManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="725">
+        Title="Zoo manager" Height="500" Width="725">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="261*"/>
             <RowDefinition Height="158*"/>
         </Grid.RowDefinitions>
         <Label x:Name="label" Content="Zoo List" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="listZoos" HorizontalAlignment="Left" Height="175" Margin="10,36,0,0" VerticalAlignment="Top" Width="100"/>
-
+        <ListBox x:Name="listZoos" HorizontalAlignment="Left" Height="175" Margin="10,36,0,0" VerticalAlignment="Top" Width="119" SelectionChanged="ListZoos_SelectionChanged"/>
+        <Label x:Name="labelAnimalList" Content="Associated Animals List" HorizontalAlignment="Left" Margin="163,10,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="listAssociatedAnimals" HorizontalAlignment="Left" Height="175" Margin="162,36,0,0" VerticalAlignment="Top" Width="138"/>
+        <ListBox x:Name="listAnimals" HorizontalAlignment="Left" Height="256" Margin="333,36,0,0" VerticalAlignment="Top" Width="158"/>
+        <Button x:Name="button_Delete_Zoo" Content="Delete Zoo" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" Width="119"/>
+        <Button x:Name="button_Remove_Animal" Content="Remove Animal" HorizontalAlignment="Left" Margin="163,216,0,0" VerticalAlignment="Top" Width="137"/>
+        <Button x:Name="button_Animal_To_Zoo" Content="Add Animal to Zoo" HorizontalAlignment="Left" Margin="333,11,0,0" VerticalAlignment="Top" Width="158"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,241,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="291" RenderTransformOrigin="0.5,0.5">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.608"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <Button x:Name="button_Add_Zoo" Content="Add Zoo" HorizontalAlignment="Left" Margin="10,272,0,0" VerticalAlignment="Top" Width="119"/>
+        <Button x:Name="button_Add_Animal" Content="Add Animal" HorizontalAlignment="Left" Margin="163,272,0,0" VerticalAlignment="Top" Width="137"/>
+        <Button x:Name="button_Update_Zoo" Content="Update Zoo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="119" Grid.Row="1"/>
+        <Button x:Name="button_Update_Animal" Content="Update Animal" HorizontalAlignment="Left" Margin="163,10,0,0" VerticalAlignment="Top" Width="137" Grid.Row="1"/>
+        <Button x:Name="button_Delete_Animal" Content="Delete Animal" HorizontalAlignment="Left" Margin="333,10,0,0" VerticalAlignment="Top" Width="158" Grid.Row="1"/>
 
     </Grid>
 </Window>
